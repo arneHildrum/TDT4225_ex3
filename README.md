@@ -11,7 +11,7 @@ Other versions of python may also work, but this is a windows spesific setup.
 ## Deployment
 As long as the requirements are met, these should be the only commands needed to deploy the program:
 ```ps1
-docker run -d mongodb/mongodb-enterprise-server:latest --name mongodb -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=secret123
+docker run --name mongodb -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=secret123 -d mongodb/mongodb-enterprise-server:latest
 py .\data_cleaning.py
 py .\program.py
 ```
