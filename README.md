@@ -1,4 +1,4 @@
-# TDT4225_ex2
+# TDT4225 exercise 3
 This repository contains the code for exercise 2 in the course TDT4225 for the 2025 fall. The code is spesific for running mysql on a docker instance. 
 
 Author: Arne Hildrum
