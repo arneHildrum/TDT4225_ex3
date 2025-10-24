@@ -13,8 +13,8 @@ def clean_data_cr(data):
         (data['crew'].isna() | (data['crew'].astype(str).str.strip() == "[]"))
     )]                                                                                                                                              # Drop rows missing both cast and crew
 
-    data['cast'] = data['cast'].apply(lambda x: ast.literal_eval(x) if pd.notnull(x) else [])                                                       # Parse JSON to Python lists
-    data['crew'] = data['crew'].apply(lambda x: ast.literal_eval(x) if pd.notnull(x) else [])
+#    data['cast'] = data['cast'].apply(lambda x: ast.literal_eval(x) if pd.notnull(x) else [])                                                       # Parse JSON to Python lists
+#    data['crew'] = data['crew'].apply(lambda x: ast.literal_eval(x) if pd.notnull(x) else [])
 
     data['id'] = pd.to_numeric(data['id'], errors='coerce').astype('Int64')                                                                         # convert id column to int
 
@@ -28,7 +28,7 @@ def clean_data_kw(data):
 
     data = data[~((data['id'].isna() | (data['keywords'].astype(str).str.strip() == "[]")))]                                                        # Drop rows missing id or keyword
     data['id'] = pd.to_numeric(data['id'], errors='coerce').astype('Int64')                                                                         # Convert id to int 
-    data['keywords'] = data['keywords'].apply(lambda x: ast.literal_eval(x) if pd.notnull(x) else [])                                               # Parse JSON to Python lists
+#    data['keywords'] = data['keywords'].apply(lambda x: ast.literal_eval(x) if pd.notnull(x) else [])                                               # Parse JSON to Python lists
 
     print("Percentage of data remaining after cleaning = ", round(len(data) / rows * 100, 2), "%")
     return data
@@ -67,8 +67,8 @@ def clean_data_md(data):
         'belongs_to_collection', 'genres', 'production_companies',
         'production_countries', 'spoken_languages'
     ]
-    for col in json_cols:
-        data[col] = data[col].apply(lambda x: ast.literal_eval(x) if pd.notnull(x) and isinstance(x, str) and x.strip().startswith("[") else [])    #  Parse dictionary-like columns
+#    for col in json_cols:
+#        data[col] = data[col].apply(lambda x: ast.literal_eval(x) if pd.notnull(x) and isinstance(x, str) and x.strip().startswith("[") else [])    #  Parse dictionary-like columns
 
     data['release_date'] = pd.to_datetime(data['release_date'], errors='coerce')                                                                    # Convert release_date to datetime        
 
