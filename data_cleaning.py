@@ -35,7 +35,7 @@ def clean_data_kw(data):
 
 
 def clean_data_ln(data):
-    """Clean the links_small dataset."""
+    """Clean the links  dataset."""
     rows = len(data)
 
     data = data.dropna(subset=['movieId'])                                                                                                          # Drop rows missing id
@@ -79,7 +79,7 @@ def clean_data_md(data):
 
 
 def clean_data_rt(data):
-    """Clean the ratings_small dataset."""
+    """Clean the ratings  dataset."""
     rows = len(data)
 
     data = data.dropna(subset=['movieId', 'rating'], how='any')                                                                                      # Drop rows missing movie or rating
@@ -103,20 +103,20 @@ if __name__ == "__main__":
     
     dp = pd.read_csv("credits.csv")
     dp = clean_data_cr(dp)
-    dp.to_csv("credits_cleaned.csv", index=False)
+    dp.to_csv("credits.csv", index=False)
 
     dp = pd.read_csv("keywords.csv")
     dp = clean_data_kw(dp)
-    dp.to_csv("keywords_cleaned.csv", index=False)
+    dp.to_csv("keywords.csv", index=False)
 
-    dp = pd.read_csv("links_small.csv")
+    dp = pd.read_csv("links.csv")
     dp = clean_data_ln(dp)
-    dp.to_csv("links_small_cleaned.csv", index=False)
+    dp.to_csv("links.csv", index=False)
 
     dp = pd.read_csv("movies_metadata.csv", low_memory=False)
     dp = clean_data_md(dp)
-    dp.to_csv("movies_metadata_cleaned.csv", index=False)
+    dp.to_csv("movies_metadata.csv", index=False)
 
-    dp = pd.read_csv("ratings_small.csv")
+    dp = pd.read_csv("ratings.csv")
     dp = clean_data_rt(dp)
-    dp.to_csv("ratings_small_cleaned.csv", index=False)
+    dp.to_csv("ratings.csv", index=False)
