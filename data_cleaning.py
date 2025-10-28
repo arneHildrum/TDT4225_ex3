@@ -15,9 +15,6 @@ def clean_data_cr(data):
 
 #    data['cast'] = data['cast'].apply(lambda x: ast.literal_eval(x) if pd.notnull(x) else [])                                                       # Parse JSON to Python lists
 #    data['crew'] = data['crew'].apply(lambda x: ast.literal_eval(x) if pd.notnull(x) else [])
-
-    data['id'] = pd.to_numeric(data['id'], errors='coerce').astype('Int64')                                                                         # convert id column to int
-
     print("Percentage of data remaining after cleaning = ", round(len(data) / rows * 100, 2), "%")
     return data
 
@@ -43,7 +40,7 @@ def clean_data_ln(data):
     data['imdbId'] = pd.to_numeric(data['imdbId'], errors='coerce').astype('Int64')
     data['tmdbId'] = pd.to_numeric(data['tmdbId'], errors='coerce').astype('Int64')
 
-    data = data.dropna(subset=['imdbId', 'tmdbId'], how='all')                                                                                      # Drop rows with missing ids
+    data = data.dropna(subset=['imdbId', 'tmdbId'], how='all')                                                                                      # Drop rows missing the other values
 
     print("Percentage of data remaining after cleaning = ", round(len(data) / rows * 100, 2), "%")
     return data
